@@ -3,6 +3,7 @@
  */
 var infoWindows = [];
 var markers = [];
+var api_url = "http://www.meatadata.info:8081";
 
 /**
  * When our modal shows up, it should be centered on the screen instead of up
@@ -378,19 +379,20 @@ function closeInfoWindows() {
  */
 function generateInfoWindowContent(restaurant, burger) {
   var template = infowindow_template;
+  console.log(restaurant);
+  console.log(burger);
   single_mapped = {
     'burger_name': burger['name'],
     'restaurant_name': restaurant['name'],
     'burger_quote': burger['quote'],
-    'button_group': button_group,
     'id': restaurant['id'],
     'url_suffix': burger['url_suffix'],
     'restaurant_url': restaurant['website'],
     'phone_number': restaurant['phone_number'],
   }
   br_separated = {
-    'address': restaurant['address'],
-    'hours_of_operation': restaurant['hours_of_operation'],
+    'address': JSON.parse(restaurant['address']),
+    'hours_of_operation': JSON.parse(restaurant['hours_of_operation']),
   }
   $.each(single_mapped, function(index, value) {
     template = template.replace(new RegExp('%' + index + '%', 'g'), value);
@@ -399,20 +401,12 @@ function generateInfoWindowContent(restaurant, burger) {
     template = template.replace('%' + index + '%', value.join('<br/>'));
   });
   // Splitting the ingredients into new table rows.
-  var formatted_ingredients = "";
-  split_ingredients = burger['ingredients'].split(' on a ');
-  if (split_ingredients.length == 1) {
-    split_ingredients = burger['ingredients'].split(' on an ');
-  }
-  if (split_ingredients.length == 1) {
-    formatted_ingredients += burger['ingredients'] + "</td></tr>";
-  }
-  else {
-    $.each(split_ingredients[0].split(', '), function(idx, ingredient) {
-      formatted_ingredients += ingredient.replace('and ', '').replace('and a ', '') + '</td></tr><tr><td>';
-    });
-    formatted_ingredients += split_ingredients[1];
-  }
+  formatted_ingredients = "";
+  burger_ingredients = JSON.parse(burger['ingredients']);
+  $.each(burger_ingredients['ingredients'], function(index, value) {
+    formatted_ingredients += "<tr><td>" + value + "</td></tr>";
+  });
+  formatted_ingredients += "<tr><td>" + burger_ingredients['bun'] + "</td></tr>";
   template = template.replace('%ingredients%', formatted_ingredients);
   return template;
 }

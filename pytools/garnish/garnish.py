@@ -1,17 +1,18 @@
-import sqlite3
+import psycopg2
+import psycopg2.extras
 from functools import wraps
 from json import loads
 from flask import Flask, request, g, jsonify
 from datetime import datetime, timedelta
+from pprint import PrettyPrinter
 
 '''
-Configuration options. Change these later (environment variables?).
+Our lovely instance of Garnish.
 '''
-DATABASE = '/Library/WebServer/Documents/qadan.github.io/pytools/garnish/garnish.db'
-DEBUG = True
-
+pp = PrettyPrinter()
 garnish = Flask(__name__)
-garnish.config.from_object(__name__)
+with open('garnish.ini', 'r') as f:
+    garnish_config = loads(f.read())
 
 '''
 Invalid things exceptions.
@@ -34,22 +35,30 @@ class InvalidRequestException(Exception):
 '''
 Database connection/utils
 '''
-def make_dicts(cursor, row):
+
+def make_dicts(cursor, rows):
     json_indices = [
         'address',
         'hours_of_operation',
     ]
-    return dict((cursor.description[idx][0], loads(value) if cursor.description[idx][0] in json_indices else value) for idx, value in enumerate(row))
+    rv = []
+    return dict((cursor.description[idx][0], loads(value) if cursor.description[idx][0] in json_indices else value) for idx, value in enumerate(rows))
 
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = sqlite3.connect(garnish.config['DATABASE'])
-        db.row_factory = make_dicts
+        config = garnish_config['db']
+        port = config['port'] if 'port' in config else 5432
+        db = g._database = psycopg2.connect(
+            dbname=config['database'],
+            user=config['user'],
+            password=config['password'],
+            port=port)
     return db
 
 def query_db(query, args=(), one=True):
-    cur = get_db().execute(query, args)
+    cur = get_db().cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute(query, args)
     rv = cur.fetchall()
     cur.close()
     return (rv[0] if rv else None) if one else rv
@@ -78,7 +87,7 @@ def jsonp(func):
     def decorated_function(*args, **kwargs):
         callback = request.args.get('callback', False)
         if callback:
-            data = str(func(*args, **kwargs).data)
+            data = str(func(*args, **kwargs).data, 'utf-8')
             content = str(callback) + '(' + data + ')'
             mimetype = 'application/javascript'
             return garnish.response_class(content, mimetype=mimetype)
@@ -240,9 +249,9 @@ def get_all_burgers():
 @garnish.route('/burger/<int:id>')
 @jsonp
 def get_burger_info(id):
-    properties = query_db('select * from burgers where id = ?', [id])
+    properties = query_db('select * from burgers where id = %s', [id])
     if properties is not None:
-        restaurants = query_db('select restaurant_id from restaurant_burgers where burger_id = ?', [id], one=False)
+        restaurants = query_db('select restaurant_id from restaurant_burgers where burger_id = %s', [id], one=False)
         properties['restaurants'] = [r['restaurant_id'] for r in restaurants]
         return jsonify(properties)
     else:
@@ -251,7 +260,7 @@ def get_burger_info(id):
 @garnish.route('/burger/<int:id>/restaurants')
 @jsonp
 def get_restaurants_for_burger(id):
-    restaurants = query_db('select restaurant_id from restaurant_burgers where burger_id = ?', [id], one=False)
+    restaurants = query_db('select restaurant_id from restaurant_burgers where burger_id = %s', [id], one=False)
     if restaurants is not None:
         restaurants = {
             'restaurants': restaurants
@@ -272,9 +281,9 @@ def get_all_restaurants():
 @garnish.route('/restaurant/<int:id>')
 @jsonp
 def get_restaurant_info(id):
-    properties = query_db('select * from restaurants where id = ?', [id])
+    properties = query_db('select * from restaurants where id = %s', [id])
     if properties is not None:
-        burgers = query_db('select burger_id from restaurant_burgers where restaurant_id = ?', [id], one=False)
+        burgers = query_db('select burger_id from restaurant_burgers where restaurant_id = %s', [id], one=False)
         properties['burgers'] = [b['burger_id'] for b in burgers]
         return jsonify(properties)
     else:
@@ -284,9 +293,9 @@ def get_restaurant_info(id):
 @jsonp
 def get_restaurant_partners(id):
     ''' Some restaurants may team up to create the same burger; handle that.'''
-    burger = query_db('select burger_id from restaurant_burgers where restaurant_id = ?', [id])
+    burger = query_db('select burger_id from restaurant_burgers where restaurant_id = %s', [id])
     if burger is not None:
-        partners = query_db('select restaurant_id from restaurant_burgers where burger_id = ? and restaurant_id != ?', [burger['burger_id'], id], one=False)
+        partners = query_db('select restaurant_id from restaurant_burgers where burger_id = %s and restaurant_id != %s', [burger['burger_id'], id], one=False)
         partners = {
             'partners': partners
         }
@@ -333,7 +342,7 @@ def search():
     i = 0;
     search_term = "%" + '%'.join(request.args.getlist('term')) + '%'
 
-    from_restaurants = query_db('select id, latitude, longitude from restaurants where name like ? or address like ?', [search_term, search_term], one=False)
+    from_restaurants = query_db('select id, latitude, longitude from restaurants where name like %s or address like %s', [search_term, search_term], one=False)
     for restaurant in from_restaurants:
         if restaurant['id'] not in ids:
             results[i] = {
@@ -344,12 +353,12 @@ def search():
             ids.append(restaurant['id'])
             i = i + 1
 
-    from_burgers = query_db('select distinct id from burgers where name like ? or quote like ? or ingredients like ?', [search_term, search_term, search_term], one=False)
+    from_burgers = query_db('select distinct id from burgers where name like %s or quote like %s or ingredients like %s', [search_term, search_term, search_term], one=False)
     for burger in from_burgers:
-        burger_restaurants = query_db('select restaurant_id from restaurant_burgers where burger_id = ?', [burger['id']], one=False)
+        burger_restaurants = query_db('select restaurant_id from restaurant_burgers where burger_id = %s', [burger['id']], one=False)
         for new_restaurant in burger_restaurants:
             if new_restaurant['restaurant_id'] not in ids:
-                new_info = query_db('select latitude, longitude from restaurants where id = ?', [new_restaurant['restaurant_id']])
+                new_info = query_db('select latitude, longitude from restaurants where id = %s', [new_restaurant['restaurant_id']])
                 results[i] = {
                     'id': new_restaurant['restaurant_id'],
                     'latitude': new_info['latitude'],
@@ -364,4 +373,4 @@ def search():
 Aaaaaaaand go.
 '''
 if __name__ == '__main__':
-    garnish.run(host='0.0.0.0')
+    garnish.run(host=garnish_config['host'], port=garnish_config['port'])

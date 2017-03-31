@@ -9,7 +9,7 @@ drop table if exists restaurant_burgers;
  * Burger information.
  */
 create table burgers (
-  id integer primary key autoincrement,
+  id serial primary key,
   name text not null,
   quote text not null,
   ingredients text not null,
@@ -20,7 +20,7 @@ create table burgers (
  * Restaurant information.
  */
 create table restaurants (
-  id integer primary key autoincrement,
+  id serial primary key,
   name text not null,
   phone_number text,
   -- Two JSON lists.
@@ -30,7 +30,7 @@ create table restaurants (
   hours_table text,
   latitude real not null,
   longitude real not null,
-  website text,
+  website text
 );
 
 /**
@@ -38,7 +38,7 @@ create table restaurants (
  * separate and link multiple if need be.
  */
 create table restaurant_burgers (
-  id integer primary key autoincrement,
+  id serial primary key,
   burger_id integer not null,
   restaurant_id integer not null
 );
