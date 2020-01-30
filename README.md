@@ -1,10 +1,6 @@
-# BURGER LOVE MAP
+# Mystery YAML Maker Helper Thing
 
-Plots all the burgers on a map, with links.
+Head over to qadan.github.io to actually use the thing.
 
-Note that this is in no way affiliated with Fresh Media or Prince Edward Island Burger Love; this is just for convenience purposes.
-
-## TODO:
-* Cycle search
-* Less bad search
-* Handlers for 'not found' properties of restaurants/burgers
+Makes use of [js-yaml](https://github.com/nodeca/js-yaml) to actually do the
+thing.
