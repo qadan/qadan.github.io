@@ -363,7 +363,7 @@ function get_weights_data() {
     },
     "beemizer": {
       "name": "Beemizer Level",
-      "group": "Gameplay",
+      "group": "Item Placement",
       "description": "The degree to which junk items are replaced with swarms of bees. Swarms of bees show up as a bee in a bottle. It should be noted that swarms of bees can despawn items, causing gameplay issues.",
       "options": {
         "0": {
