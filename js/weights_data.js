@@ -38,7 +38,7 @@ function get_weights_data() {
     "item_placement": {
       "name": "Item Placement Difficulty",
       "group": "Item Placement",
-      "description": "Whether or not items will be placed in obscure locations. It's worth checking a detailed description of these options on the <a href='https://alttpr.com/en/options'>official site</a>.",
+      "description": "Whether or not items will be placed in obscure locations. It's worth checking a detailed description of these options on the <a href='https://alttpr.com/en/options' target='_blank'>official site</a>.",
       "options": {
         "basic": {
           "name": "Basic",
@@ -235,7 +235,7 @@ function get_weights_data() {
         },
         "inverted": {
           "name": "Inverted",
-          "description": "Start in the Dark World, requiring the Moon Pearl to traverse the Light World as Link. It's very much worth checking the details for this on the <a href='https://alttpr.com/en/options'>official site</a>.",
+          "description": "Start in the Dark World, requiring the Moon Pearl to traverse the Light World as Link. It's very much worth checking the details for this on the <a href='https://alttpr.com/en/options' target='_blank'>official site</a>.",
           "default": 20
         },
         "retro": {
@@ -257,7 +257,7 @@ function get_weights_data() {
         },
         "simple": {
           "name": "Simple",
-          "description": "Entrances are sorted into a large set of groups, and those groups are shuffled between themselves. Check the <a href='https://alttpr.com/en/options'>official site</a> to see how these entrances are grouped."
+          "description": "Entrances are sorted into a large set of groups, and those groups are shuffled between themselves. Check the <a href='https://alttpr.com/en/options' target='_blank'>official site</a> to see how these entrances are grouped."
         },
         "restricted": {
           "name": "Restricted",
@@ -314,7 +314,7 @@ function get_weights_data() {
         },
         "swordless": {
           "name": "Swordless",
-          "description": "No swords are placed in the game. Some changes are made to gameplay to facilitate this; check the <a href='https://alttpr.com/en/options'>official site</a> for details.",
+          "description": "No swords are placed in the game. Some changes are made to gameplay to facilitate this; check the <a href='https://alttpr.com/en/options' target='_blank'>official site</a> for details.",
           "default": 5
         }
       }
@@ -322,7 +322,7 @@ function get_weights_data() {
     "item_pool": {
       "name": "Item Pool Difficulty",
       "group": "Gameplay",
-      "description": "The degree to which restrictions are made to the item pool to increase the game's difficulty. Check the <a href='https://alttpr.com/en/options'>official site</a> for a detailed item pool table.",
+      "description": "The degree to which restrictions are made to the item pool to increase the game's difficulty. Check the <a href='https://alttpr.com/en/options' target='_blank'>official site</a> for a detailed item pool table.",
       "options": {
         "normal": {
           "name": "Normal",
@@ -343,7 +343,7 @@ function get_weights_data() {
     "item_functionality": {
       "name": "Item Functionality Difficulty",
       "group": "Gameplay",
-      "description": "The degree to which restrictions are made on item functionality to increase the game's difficulty. Check the <a href='https://alttpr.com/en/options'>official site</a> for a detailed item functionality table. The Crowd Control option is intentionally omitted.",
+      "description": "The degree to which restrictions are made on item functionality to increase the game's difficulty. Check the <a href='https://alttpr.com/en/options' target='_blank'>official site</a> for a detailed item functionality table. The Crowd Control option is intentionally omitted.",
       "options": {
         "normal": {
           "name": "Normal",
