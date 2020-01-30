@@ -482,11 +482,11 @@ function get_weights_data() {
       "_comment": "These aren't typos; the settings as-is are rather counterintuitive, and are normalized here to describe whether the music is 'on' or 'off'.",
       "options": {
         "off": {
-          "name": "On"
+          "name": "On",
+          "default": 100
         },
         "on": {
-          "name": "Off",
-          "default": 100
+          "name": "Off"
         }
       }
     },
