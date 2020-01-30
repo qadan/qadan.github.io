@@ -361,6 +361,34 @@ function get_weights_data() {
         }
       }
     },
+    "beemizer": {
+      "name": "Beemizer Level",
+      "group": "Gameplay",
+      "description": "The degree to which junk items are replaced with swarms of bees. Swarms of bees show up as a bee in a bottle. It should be noted that swarms of bees can despawn items, causing gameplay issues.",
+      "options": {
+        "0": {
+          "name": "Off",
+          "description": "No junk items are replaced with swarms of bees.",
+          "default": 100
+	},
+        "1": {
+          "name": "1",
+          "description": "A few junk items are replaced with swarms of bees.",
+	},
+        "2": {
+          "name": "2",
+          "description": "Some junk items are replaced with swarms of bees.",
+	},
+        "3": {
+          "name": "3",
+          "description": "A lot of junk items are replaced with swarms of bees.",
+	},
+        "4": {
+          "name": "4",
+          "description": "A great deal of junk items are replaced with swarms of bees.",
+	}
+      }
+    },
     "enemy_damage": {
       "name": "Enemy Damage",
       "group": "Enemizer",
@@ -478,7 +506,7 @@ function get_weights_data() {
     "disablemusic": {
       "name": "Game Music",
       "group": "ROM Settings",
-      "description": "Whether or not to disable the in-game music. Disabling the music allows for MSU-1 sound packs to function.",
+      "description": "The status of the in-game music. Turning the music off allows for MSU-1 sound packs to function. <strong>You will see these reversed in your resultant YAML</strong>, the language surrounding the in-game music status is counterintuitive and normalized here.",
       "_comment": "These aren't typos; the settings as-is are rather counterintuitive, and are normalized here to describe whether the music is 'on' or 'off'.",
       "options": {
         "off": {
