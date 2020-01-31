@@ -8,30 +8,41 @@
     <title>Mystery YAML Maker</title>
   </head>
   <body class="bg-dark">
-    <div class="container bg-dark">
-      <h2 class="text-white">Mystery YAML Maker</h2>
-      <div class="card bg-light">
-        <div class="card-body">
-          <p class="card-text">For each section, move the slider to the left or right depending on how frequently you would like the mystery randomizer to choose that option compared to the other options in the section. For example, a section with weights of 5, 5, and 10 means that about a quarter of the time the first option will be picked, about a quarter of the time the second option will be picked, and about half the time the third option will be picked.</p>
-          <p class="card-text">Move the slider to 0 to prevent that option from ever being selected.</p>
-          <p class="card-text">Each section needs at least one option greater than 0. If only one option is greater than 0, that's the only option that will be picked, effectively de-mystery-ifying that section.</p>
-          <p class="card-text"><strong>Options in a section do not have to add up to 100</strong>; these weights aren't a percentage chance that each one will be picked.</p>
-          <p class="card-text">Click on the header of a section to toggle it open and closed for ease of navigation.</p>
+    <nav class="navbar navbar-inverse bg-dark mb-4">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand text-light">Mystery YAML Maker</span>
+        </div>
+        <div class="navbar-right">
+          <u class="text-light"><a class="text-light" href="https://github.com/qadan/qadan.github.io" target="_blank">View the repo on GitHub</a></u>
         </div>
       </div>
-      <br/>
-
-      <div class="card mx-auto text-white bg-secondary" id="yaml-drop-zone">
-        <div class="card-body">
-          <p class="card-text text-center" id="drag-and-drop-text">Drag and drop an existing weights YAML here to pre-populate the form.</p>
+    </nav>
+    <main role="main">
+      <div class="container bg-dark">
+        <div class="card bg-light">
+          <div class="card-body">
+            <p class="card-text">For each section, move the slider to the left or right depending on how frequently you would like the mystery randomizer to choose that option compared to the other options in the section. For example, a section with weights of 5, 5, and 10 means that about a quarter of the time the first option will be picked, about a quarter of the time the second option will be picked, and about half the time the third option will be picked.</p>
+            <p class="card-text">Move the slider to 0 to prevent that option from ever being selected.</p>
+            <p class="card-text">Each section needs at least one option greater than 0. If only one option is greater than 0, that's the only option that will be picked, effectively de-mystery-ifying that section.</p>
+            <p class="card-text"><strong>Options in a section do not have to add up to 100</strong>; these weights aren't a percentage chance that each one will be picked.</p>
+            <p class="card-text">Click on the header of a section to toggle it open and closed for ease of navigation.</p>
+          </div>
         </div>
+        <br/>
+
+        <div class="card mx-auto text-white bg-secondary" id="yaml-drop-zone">
+          <div class="card-body">
+            <p class="card-text text-center" id="drag-and-drop-text">Drag and drop an existing weights YAML here to pre-populate the form.</p>
+          </div>
+        </div>
+        <br/>
+
+        <form id="weights-form">
+        </form>
+
       </div>
-      <br/>
-
-      <form id="weights-form">
-      </form>
-
-    </div>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
