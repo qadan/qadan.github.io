@@ -19,7 +19,7 @@ function generate_option_range(section, option, option_data) {
   var option_range_div = document.createElement('div');
   option_range_div.className = 'option-range-group';
   // Title of the option range.
-  var option_range_title = document.createElement('h5');
+  var option_range_title = document.createElement('h6');
   option_range_title.className = 'card-title pb-n1';
   option_range_title.id = section + '--' + option + '--title';
   option_range_title.innerHTML = option_data['name'];
@@ -93,7 +93,7 @@ function generate_section(section, section_data) {
   section_div.id = section;
   section_div.className = "section-group";
   // Section title element.
-  var title = document.createElement('h4');
+  var title = document.createElement('h5');
   title.id = section + '-title';
   title.className = "card-title section-title";
   title.innerHTML = section_data['name'];
