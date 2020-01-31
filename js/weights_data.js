@@ -370,23 +370,23 @@ function get_weights_data() {
           "name": "Off",
           "description": "No junk items are replaced with swarms of bees.",
           "default": 100
-	},
+  },
         "1": {
           "name": "1",
           "description": "A few junk items are replaced with swarms of bees.",
-	},
+  },
         "2": {
           "name": "2",
           "description": "Some junk items are replaced with swarms of bees.",
-	},
+  },
         "3": {
           "name": "3",
-          "description": "A lot of junk items are replaced with swarms of bees.",
-	},
+          "description": "A lot of junk items, and occasionally bug nets, heart pieces, heart containers, boomerangs, magic, shield upgrades, and armor upgrades, are replaced with swarms of bees.",
+  },
         "4": {
           "name": "4",
-          "description": "A great deal of junk items are replaced with swarms of bees.",
-	}
+          "description": "Don't do this.",
+  }
       }
     },
     "enemy_damage": {
