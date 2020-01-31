@@ -370,23 +370,23 @@ function get_weights_data() {
           "name": "Off",
           "description": "No junk items are replaced with swarms of bees.",
           "default": 100
-  },
-        "1": {
+        },
+        "1": {4
           "name": "1",
           "description": "A few junk items are replaced with swarms of bees.",
-  },
+        },
         "2": {
           "name": "2",
           "description": "Some junk items are replaced with swarms of bees.",
-  },
+        },
         "3": {
           "name": "3",
           "description": "A lot of junk items, and occasionally bug nets, heart pieces, heart containers, boomerangs, magic, shield upgrades, and armor upgrades, are replaced with swarms of bees.",
-  },
+        },
         "4": {
           "name": "4",
           "description": "Don't do this.",
-  }
+        }
       }
     },
     "enemy_damage": {
@@ -506,7 +506,7 @@ function get_weights_data() {
     "disablemusic": {
       "name": "Game Music",
       "group": "ROM Settings",
-      "description": "The status of the in-game music. Turning the music off allows for MSU-1 sound packs to function. <strong>You will see these reversed in your resultant YAML</strong>, the language surrounding the in-game music status is counterintuitive and normalized here.",
+      "description": "The status of the in-game music. Turning the music off allows for MSU-1 sound packs to function. <strong>You will see these reversed in your resultant YAML</strong>; the language surrounding the in-game music status is counterintuitive and normalized here.",
       "_comment": "These aren't typos; the settings as-is are rather counterintuitive, and are normalized here to describe whether the music is 'on' or 'off'.",
       "options": {
         "off": {
@@ -545,7 +545,7 @@ function get_weights_data() {
     "heartbeep": {
       "name": "Heart Beep Speed",
       "group": "ROM Settings",
-      "description": "How fast the heart beep sound repeats when Link is at low health. Bear in mind that putting weight in 'Random' means the mystery randomizer may randomly select a random speed, invalidating any 0 weights.",
+      "description": "How fast the heart beep sound repeats when Link is at low health.",
       "options": {
         "double": {
           "name": "2x Speed"
