@@ -20,12 +20,12 @@ function generate_option_range(section, option, option_data) {
   option_range_div.className = 'option-range-group';
   // Title of the option range.
   var option_range_title = document.createElement('h5');
-  option_range_title.className = 'card-title';
+  option_range_title.className = 'card-title pb-n1';
   option_range_title.id = section + '--' + option + '--title';
   option_range_title.innerHTML = option_data['name'];
   // Row that the input and value go in.
   var option_range_input_row = document.createElement('div');
-  option_range_input_row.className = 'row';
+  option_range_input_row.className = 'row pb-n1';
   // Column div that the range element goes into.
   var option_range_input_column = document.createElement('div');
   option_range_input_column.className = 'col';
@@ -68,12 +68,11 @@ function generate_option_range(section, option, option_data) {
   if (option_data.hasOwnProperty('description')) {
     var option_range_description = document.createElement('small');
     option_range_description.id = section + '--' + option + '--description';
-    option_range_description.className = 'form-text text-muted';
+    option_range_description.className = 'form-text text-muted help-text pb-4';
     option_range_description.innerHTML = option_data['description'];
     option_range_div.appendChild(option_range_description);
   }
   // Add a line break.
-  option_range_div.appendChild(document.createElement('br'));
   return option_range_div;
 }
 
@@ -96,13 +95,13 @@ function generate_section(section, section_data) {
   // Section title element.
   var title = document.createElement('h4');
   title.id = section + '-title';
-  title.className = "card-title";
+  title.className = "card-title section-title";
   title.innerHTML = section_data['name'];
   section_div.appendChild(title);
   // Section description.
   var description = document.createElement('p');
   description.id = section + '-description';
-  description.className = "card-text";
+  description.className = "card-text help-text";
   description.innerHTML = section_data['description'];
   section_div.appendChild(description);
   // Section options.

@@ -4,6 +4,9 @@ body {
 .upload-drop-zone {
   display: none;
 }
+.help-text {
+  display: none;
+}
 #yaml-drop-zone {
   width: 400px;
 }
