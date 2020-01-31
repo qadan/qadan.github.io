@@ -1,0 +1,19 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+  color: #ccc;
+  border-stype: dashed;
+  border-color: ccc;
+  line-height: 200px;
+  text-align: center;
+  display: none;
+}
+#yaml-drop-zone {
+  width: 600px;
+  text-align: center;
+}

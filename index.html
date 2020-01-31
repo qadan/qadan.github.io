@@ -4,25 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Mystery YAML Maker</title>
-    <style>
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-    </style>
   </head>
   <body>
     <div class="container">
       <h2>Mystery YAML Maker</h2>
-      <p>Instructions:</p>
-      <p>For each section, move the slider to the left or right depending on how frequently you would like the mystery randomizer to choose that option compared to the other options in the section. For example, a section with weights of 5, 5, and 10 means that about a quarter of the time the first option will be picked, about a quarter of the time the second option will be picked, and about half the time the third option will be picked.</p>
-      <p>Move the slider to 0 to prevent that option from ever being selected.</p>
-      <p>Each section needs at least one option greater than 0. If only one option is greater than 0, that's the only option that will be picked, effectively de-mystery-ifying that option.</p>
-      <p><strong>Options in a section do not have to add up to 100</strong>; these weights aren't a percentage chance that each one will be picked.</p>
+      <div class="card bg-light">
+        <div class="card-body">
+          <p class="card-text">Instructions:</p>
+          <p class="card-text">For each section, move the slider to the left or right depending on how frequently you would like the mystery randomizer to choose that option compared to the other options in the section. For example, a section with weights of 5, 5, and 10 means that about a quarter of the time the first option will be picked, about a quarter of the time the second option will be picked, and about half the time the third option will be picked.</p>
+          <p class="card-text">Move the slider to 0 to prevent that option from ever being selected.</p>
+          <p class="card-text">Each section needs at least one option greater than 0. If only one option is greater than 0, that's the only option that will be picked, effectively de-mystery-ifying that section.</p>
+          <p class="card-text"><strong>Options in a section do not have to add up to 100</strong>; these weights aren't a percentage chance that each one will be picked.</p>
+          <p class="card-text">Click on the header of a section to toggle it open and closed for ease of navigation.</p>
+        </div>
+      </div>
+      <br/>
+
+      <div class="card mx-auto text-white bg-dark" id="yaml-drop-zone">
+        <div class="card-body">
+          <p class="card-text" id="drag-and-drop-text">Drag and drop an existing weights YAML here to pre-populate the form.</p>
+        </div>
+      </div>
+      <br/>
 
       <form id="weights-form">
       </form>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -32,6 +41,7 @@ body {
     <script src="js/weights_data.js"></script>
     <script src="js/generate_section.js"></script>
     <script src="js/make_yaml.js"></script>
+    <script src="js/prepopulate_yaml.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript">
       bootstrap_mystery_yaml_form();

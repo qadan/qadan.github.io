@@ -44,18 +44,29 @@ function populate_groups() {
   for (var group in weights_data) {
     // Create a group div card.
     var group_element = document.createElement('div');
-    group_element.className = 'card';
+    group_element.className = 'card bg-light';
     group_element.id = get_group_id_from_name(group);
     // Add the title to the card.
     var group_title = document.createElement('h4');
     group_title.className = 'card-header';
     group_title.innerHTML = group;
+    group_title.id = group_element.id + '--title';
+    $(group_title).on('click', function() {
+      var collapse_element = '#' + this.id.substring(0, this.id.length - 5) + 'collapse';
+      console.log(collapse_element);
+      $(collapse_element).collapse('toggle');
+    });
     group_element.appendChild(group_title);
+    // Create the group body collapse container.
+    var group_body_collapse_container = document.createElement('div');
+    group_body_collapse_container.className = 'collapse show';
+    group_body_collapse_container.id = group_element.id + '--collapse';
+    group_element.appendChild(group_body_collapse_container);
     // Create the group body div.
     var group_body = document.createElement('div');
     group_body.className = 'card-body';
     group_body.id = group_element.id + '--body';
-    group_element.appendChild(group_body);
+    group_body_collapse_container.appendChild(group_body);
     document.getElementById('weights-form').appendChild(group_element);
     document.getElementById('weights-form').appendChild(document.createElement('br'));
   }
@@ -159,4 +170,5 @@ function bootstrap_mystery_yaml_form() {
   add_button();
   make_button_do_a_yaml();
   create_bad_weights_modal();
+  enable_drop_zone();
 }
