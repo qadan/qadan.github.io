@@ -422,16 +422,16 @@ function get_weights_data() {
         },
         "easy": {
           "name": "Easy",
-          "description": "Enemies have 1-4HP, requiring 1-2 fighter's sword slashes to kill.",
+          "description": "Each enemy is randomly given 1-4HP, requiring 1-2 fighter's sword slashes to kill.",
           "default": 20
         },
         "hard": {
           "name": "Hard",
-          "description": "Enemies have 2-15HP, requiring 1-8 fighter's sword slashes to kill."
+          "description": "Each enemy is randomly given 2-15HP, requiring 1-8 fighter's sword slashes to kill."
         },
         "expert": {
           "name": "Expert",
-          "description": "Enemies have 2-30HP, requiring 1-15 fighter's sword slashes to kill."
+          "description": "Each enemy is randomly given 2-30HP, requiring 1-15 fighter's sword slashes to kill."
         }
       }
     },
