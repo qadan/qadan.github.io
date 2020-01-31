@@ -145,12 +145,15 @@ function populate_yaml_metadata_stuff() {
  * Jams a button on the bottom of the whole thing.
  */
 function add_button() {
+  var button_div = document.createElement('div');
+  button_div.className = 'text-center';
   var button = document.createElement('button');
   button.type = 'button';
   button.id = 'make-yaml-button';
   button.className = 'btn btn-primary';
   button.innerHTML = 'Generate YAML File';
-  document.getElementById('weights-form').appendChild(button);
+  button_div.appendChild(button);
+  document.getElementById('weights-form').appendChild(button_div);
 }
 
 /**

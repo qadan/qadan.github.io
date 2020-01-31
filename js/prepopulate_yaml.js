@@ -74,7 +74,7 @@ function add_drop_event_listener() {
 
   drop_zone.ondrop = function(e) {
     e.preventDefault();
-    this.className = 'card mx-auto text-white bg-dark';
+    this.className = 'card mx-auto text-white bg-secondary';
     document.getElementById('yaml-filename').value = e.dataTransfer.files[0].name;
     parse_existing_yaml(e.dataTransfer.files[0]).then(function(yaml) {
       if (yaml) {
@@ -94,7 +94,7 @@ function add_drop_event_listener() {
   };
 
   drop_zone.ondragleave = function() {
-    this.className = 'card mx-auto text-white bg-dark';
+    this.className = 'card mx-auto text-white bg-secondary';
     document.getElementById('drag-and-drop-text').innerHTML = "Drag and drop an existing weights YAML here to pre-populate the form.";
     return false;
   };
