@@ -3,17 +3,8 @@ body {
   padding-bottom: 40px;
 }
 .upload-drop-zone {
-  height: 200px;
-  border-width: 4px;
-  margin-bottom: 20px;
-  color: #ccc;
-  border-style: dashed;
-  border-color: ccc;
-  line-height: 200px;
-  text-align: center;
   display: none;
 }
 #yaml-drop-zone {
   width: 400px;
-  text-align: center;
 }
