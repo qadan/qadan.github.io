@@ -371,7 +371,7 @@ function get_weights_data() {
           "description": "No junk items are replaced with swarms of bees.",
           "default": 100
         },
-        "1": {4
+        "1": {
           "name": "1",
           "description": "A few junk items are replaced with swarms of bees.",
         },
