@@ -174,7 +174,6 @@ function make_button_do_a_yaml() {
 function make_help_button_toggle() {
   $('#toggle-help').click(function() {
     $('.help-text').each(function() {
-      console.log(this.style.display);
       if (this.style.display == 'none' || this.style.display == '') {
         this.style.display = 'block';
       }
@@ -191,6 +190,7 @@ function make_help_button_toggle() {
 function bootstrap_mystery_yaml_form() {
   populate_groups();
   populate_sections();
+  generate_gt_ganon_percentages_table();
   populate_yaml_metadata_stuff();
   add_button();
   make_button_do_a_yaml();
