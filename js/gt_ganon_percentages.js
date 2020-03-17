@@ -126,19 +126,19 @@ function calculate_gt_ganon_percentages() {
   };
 
   for (var i = 1; i < 8; i++) {
-    var gt_more_coefficient = 0;
-    for (var j = 0; j < i; j++) {
-      gt_more_coefficient += ganons_tower_probabilities[j];
-    }
-    percentages['gt-requires-more-percentage'] += (ganon_probabilities[i] * gt_more_coefficient) * 100;
-    percentages['requirements-are-equal-percentage'] += (ganon_probabilities[i] * ganons_tower_probabilities[i]) * 100;
-  }
-  for (var i = 1; i < 7; i++) {
     var ganon_more_coefficient = 0;
-    for (var j = i; j < 7; j++) {
+    for (var j = 0; j < i; j++) {
       ganon_more_coefficient += ganons_tower_probabilities[j];
     }
     percentages['ganon-requires-more-percentage'] += (ganon_probabilities[i] * ganon_more_coefficient) * 100;
+    percentages['requirements-are-equal-percentage'] += (ganon_probabilities[i] * ganons_tower_probabilities[i]) * 100;
+  }
+  for (var i = 1; i < 7; i++) {
+    var gt_more_coefficient = 0;
+    for (var j = i; j < 7; j++) {
+      gt_more_coefficient += ganons_tower_probabilities[j];
+    }
+    percentages['gt-requires-more-percentage'] += (ganon_probabilities[i] * gt_more_coefficient) * 100;
   }
 
   return percentages;
