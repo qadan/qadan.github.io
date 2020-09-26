@@ -59,7 +59,12 @@ function populate_groups() {
     group_element.appendChild(group_title);
     // Create the group body collapse container.
     var group_body_collapse_container = document.createElement('div');
-    group_body_collapse_container.className = 'collapse show';
+    if (group == 'ROM Settings') {
+      group_body_collapse_container.className = 'collapse';
+    }
+    else {
+      group_body_collapse_container.className = 'collapse show';
+    }
     group_body_collapse_container.id = group_element.id + '--collapse';
     group_element.appendChild(group_body_collapse_container);
     // Create the group body div.
@@ -116,7 +121,7 @@ function populate_yaml_metadata_stuff() {
   group_body.appendChild(yaml_description);
   // YAML Description help text.
   var yaml_description_help_text = document.createElement('small');
-  yaml_description_help_text.className = 'form-text text-muted';
+  yaml_description_help_text.className = 'form-text text-muted help-text pb-4';
   yaml_description_help_text.innerHTML = 'Enter a description that will be placed inside the YAML and displayed during seed generation.';
   group_body.appendChild(yaml_description_help_text);
   group_body.appendChild(document.createElement('br'));
@@ -134,7 +139,7 @@ function populate_yaml_metadata_stuff() {
   group_body.appendChild(yaml_filename);
   // YAML Filename help text.
   var yaml_filename_help_text = document.createElement('small');
-  yaml_filename_help_text.className = 'form-text text-muted';
+  yaml_filename_help_text.className = 'form-text text-muted help-text pb-4';
   yaml_filename_help_text.innerHTML = 'Enter a name for your YAML file.';
   group_body.appendChild(yaml_filename);
   document.getElementById('weights-form').appendChild(group_element);
@@ -145,12 +150,15 @@ function populate_yaml_metadata_stuff() {
  * Jams a button on the bottom of the whole thing.
  */
 function add_button() {
+  var button_div = document.createElement('div');
+  button_div.className = 'text-center';
   var button = document.createElement('button');
   button.type = 'button';
   button.id = 'make-yaml-button';
   button.className = 'btn btn-primary';
   button.innerHTML = 'Generate YAML File';
-  document.getElementById('weights-form').appendChild(button);
+  button_div.appendChild(button);
+  document.getElementById('weights-form').appendChild(button_div);
 }
 
 /**
@@ -161,14 +169,32 @@ function make_button_do_a_yaml() {
 }
 
 /**
+ * Make the help button toggle help text.
+ */
+function make_help_button_toggle() {
+  $('#toggle-help').click(function() {
+    $('.help-text').each(function() {
+      if (this.style.display == 'none' || this.style.display == '') {
+        this.style.display = 'block';
+      }
+      else {
+        this.style.display = 'none';
+      }
+    });
+  });
+}
+
+/**
  * Runs through the process of generating the form and event handlers.
  */
 function bootstrap_mystery_yaml_form() {
   populate_groups();
   populate_sections();
+  generate_gt_ganon_percentages_table();
   populate_yaml_metadata_stuff();
   add_button();
   make_button_do_a_yaml();
+  make_help_button_toggle();
   create_bad_weights_modal();
   enable_drop_zone();
 }

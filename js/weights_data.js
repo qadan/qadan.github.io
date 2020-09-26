@@ -23,11 +23,11 @@ function get_weights_data() {
         },
         "overworld_glitches": {
           "name": "Overworld Glitches",
-          "description": "Boots clipping, bunny death mountain descent, and overworld superbunny tricks may be required to complete the seed."
+          "description": "Boots clipping, bunny death mountain descent, overworld superbunny tricks, and other valid overworld glitches may be required to complete the seed."
         },
         "major_glitches": {
           "name": "Major Glitches",
-          "description": "Some interior clipping may be required to complete the seed."
+          "description": "Some major glitches may be required to complete the seed."
         },
         "no_logic": {
           "name": "No Logic",
@@ -225,7 +225,7 @@ function get_weights_data() {
       "options": {
         "standard": {
           "name": "Standard",
-          "description": "Start in Uncle's house, get a weapon from him, and save Zelda from Hyrule Castle before starting the game.",
+          "description": "Start in Uncle's house, get a weapon from him, and save Zelda from Hyrule Castle at the start of the game.",
           "default": 35
         },
         "open": {
@@ -240,7 +240,7 @@ function get_weights_data() {
         },
         "retro": {
           "name": "Retro",
-          "description": "Arrows and keys must be purchased, firing arrows costs money, and some single-entry caves contain take-any choices or a sword",
+          "description": "Arrows must be purchased, keys work in any dungeon and can be purchased, firing arrows costs money, and some single-entry caves contain take-any choices or a sword.",
           "default": 10
         }
       }
@@ -248,7 +248,7 @@ function get_weights_data() {
     "entrance_shuffle": {
       "name": "Entrance Shuffle",
       "group": "Gameplay",
-      "description": "The method by which overworld entrances are shuffled between themselves.",
+      "description": "The method by which overworld (and possibly interior) entrances are shuffled between themselves.",
       "options": {
         "none": {
           "name": "None",
@@ -343,7 +343,7 @@ function get_weights_data() {
     "item_functionality": {
       "name": "Item Functionality Difficulty",
       "group": "Gameplay",
-      "description": "The degree to which restrictions are made on item functionality to increase the game's difficulty. Check the <a href='https://alttpr.com/en/options' target='_blank'>official site</a> for a detailed item functionality table. The Crowd Control option is intentionally omitted.",
+      "description": "The degree to which restrictions are made on item functionality to increase the game's difficulty. Check the <a href='https://alttpr.com/en/options' target='_blank'>official site</a> for a detailed item functionality table. The Crowd Control option is intentionally omitted; if you want to add it back in, add a crowd_control option to the item_functionality section.",
       "options": {
         "normal": {
           "name": "Normal",
@@ -572,16 +572,16 @@ function get_weights_data() {
       "options": {
         "default": {
           "name": "Default",
-          "description": "Do not randomize the color palette for the overworld",
+          "description": "Do not randomize the color palette for the overworld.",
           "default": 100
         },
         "random": {
           "name": "Random",
-          "description": "Completely randomize the color palette for the overworld"
+          "description": "Completely randomize the color palette for the overworld."
         },
         "blackout": {
           "name": "Blackout",
-          "description": "Set all colors for the overworld to completely black"
+          "description": "Set all colors for the overworld to completely black."
         }
       }
     },
@@ -592,16 +592,16 @@ function get_weights_data() {
       "options": {
         "default": {
           "name": "Default",
-          "description": "Do not randomize the color palette for the underworld",
+          "description": "Do not randomize the color palette for the underworld.",
           "default": 100
         },
         "random": {
           "name": "Random",
-          "description": "Completely randomize the color palette for the underworld"
+          "description": "Completely randomize the color palette for the underworld."
         },
         "blackout": {
           "name": "Blackout",
-          "description": "Set all colors for the underworld to completely black"
+          "description": "Set all colors for the underworld to completely black."
         }
       }
     }
