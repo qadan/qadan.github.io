@@ -47,7 +47,7 @@ function get_weights_data() {
         },
         "advanced": {
           "name": "Advanced",
-          "description": "Items may be placed in obscure or hard-to-reach locations, notably in dark rooms that can be lit with the fire rod.",
+          "description": "Items may be placed in obscure or hard-to-reach locations, notably in dark rooms that can be reached by lighting torches with the fire rod.",
           "default": 67
         }
       }
@@ -91,7 +91,7 @@ function get_weights_data() {
         },
         "locations": {
           "name": "100% Locations",
-          "description": "All 216 locations in the game will be accessible."
+          "description": "All 216 shuffled items in the game will be accessible."
         },
         "none": {
           "name": "Beatable Only",
@@ -101,7 +101,7 @@ function get_weights_data() {
       }
     },
     "goals": {
-      "name": "Goal",
+      "name": "Win Condition",
       "group": "Goals",
       "description": "The endgame requirement to beat the seed.",
       "options": {
