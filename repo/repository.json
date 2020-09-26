@@ -1,0 +1,23 @@
+{
+  "name": "Fantallis Packages",
+  "packages": [
+    {
+      "name": "Hollow Knight Randomizer 3 (Fantallis)",
+      "author": "fantallis",
+      "game_name": "Hollow Knight Randomizer",
+      "version": "0.2.0",
+      "flags": ["map", "pins"],
+      "required_app_version": "2.3.0.0",
+      "uid": "hkr3_fantallis",
+      "link": "https://github.com/qadan/hollow_knight_randomizer_tracker/releases/latest/download/hkr3_fantallis.zip",
+      "variants": {
+        "standard": {
+          "display_name": "Map Tracker"
+        },
+        "items_only": {
+          "display_name": "Items Only"
+        }
+      }
+    }
+  ]
+}
