@@ -10,14 +10,16 @@
       "required_app_version": "2.3.0.0",
       "uid": "hkr3_fantallis",
       "link": "https://github.com/qadan/hollow_knight_randomizer_tracker/releases/latest/download/hkr3_fantallis.zip",
-      "variants": {
-        "standard": {
-          "display_name": "Map Tracker"
+      "variants": [
+        {
+          "name": "Map Tracker",
+          "flags": ["map", "pins"]
         },
-        "items_only": {
-          "display_name": "Items Only"
+        {
+          "name": "Items Only",
+          "flags": []
         }
-      }
+      ]
     }
   ]
 }
