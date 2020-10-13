@@ -2,10 +2,10 @@
   "name": "Fantallis Packages",
   "packages": [
     {
-      "name": "Hollow Knight Randomizer 3 (Fantallis)",
+      "name": "Hollow Knight Randomizer 3",
       "author": "fantallis",
       "game_name": "Hollow Knight Randomizer",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "flags": ["map", "pins"],
       "required_app_version": "2.3.0.0",
       "uid": "hkr3_fantallis",
